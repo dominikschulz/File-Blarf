@@ -89,7 +89,7 @@ sub blarf {
         }
     }
     ## use critic
-    
+
     return;
 }
 
