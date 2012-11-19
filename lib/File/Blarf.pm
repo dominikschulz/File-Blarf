@@ -17,9 +17,7 @@ File::Blarf - Simple reading and writing of files.
 
     my $foo = File::Blarf::slurp('/etc/passwd');
 
-=head1 SUBROUTINES/METHODS
-
-=head2 slurp
+=func slurp
 
 Read a whole file into a string.
 
@@ -56,7 +54,7 @@ sub slurp {
     }
 }
 
-=head2 blarf
+=func blarf
 
 Write a string into a file.
 
@@ -93,7 +91,7 @@ sub blarf {
     return;
 }
 
-=head2 cat
+=func cat
 
 Append on file to another.
 
@@ -138,69 +136,10 @@ sub cat {
     return;
 }
 
-=head1 AUTHOR
-
-Dominik Schulz, C<< <dominik.schulz at gauner.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-file-blarf at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=File-Blarf>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc File::Blarf
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-Blarf>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/File-Blarf>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/File-Blarf>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/File-Blarf/>
-
-=back
-
 =head1 SEE ALSO
 
-=over 4
-
-=item * File::Slurp
-
-L<File::Slurp> provides a more sophisticated implementation of much of the same functiality
-
-=back
-
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2012 Dominik Schulz
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
-
+=for :list
+ * File::Slurp - L<File::Slurp> provides a more sophisticated implementation of much of the same functiality
 
 =cut
 
