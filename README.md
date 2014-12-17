@@ -1,6 +1,7 @@
 This is the README file for File-Blarf, simple reading and writing of files.
 
 ## Description
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/gittex/File-Blarf?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 File-Blarf provides a module for
 simple reading and writing of files.
