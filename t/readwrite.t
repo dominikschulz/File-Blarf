@@ -38,22 +38,28 @@ ok(File::Blarf::blarf($tempfile,$joined),'Wrote array to file');
 ok($read = File::Blarf::slurp($tempfile,{ Chomp => 1, }),'Read array from file (scalar context)');
 is($read,$joined,'Read data is written data, even in scalar context');
 
-#
-# Try to write to a locked file
-#
 open(my $FH, '<', $tempfile);
 flock $FH, LOCK_EX;
-my $timedout = 0;
-eval {
-    local $SIG{ALRM} = sub { die "timeout\n"; };
-    alarm 1;
-    File::Blarf::blarf($tempfile,$joined, { Flock => 1, });
-};
-alarm 0;
-if($@ && $@ eq "timeout\n") {
-    $timedout = 1;
+
+SKIP: {
+	skip("alarm won't interrupt a blocking call on Win", 1) if ($^O =~ /Win/);
+
+	#
+	# Try to write to a locked file
+	#
+	my $timedout = 0;
+	eval {
+		local $SIG{ALRM} = sub { die "timeout\n"; };
+		alarm 1;
+		File::Blarf::blarf($tempfile,$joined, { Flock => 1, });
+	};
+	alarm 0;
+	if($@ && $@ eq "timeout\n") {
+		$timedout = 1;
+	}
+	ok($timedout,'Write operation on locked file timed out');
 }
-ok($timedout,'Write operation on locked file timed out');
+
 flock $FH, LOCK_UN;
 ok(File::Blarf::blarf($tempfile,$joined, { Flock => 1, }),'Wrote array to a, now unlocked, file');
 close($FH);
